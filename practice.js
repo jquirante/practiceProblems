@@ -17,8 +17,8 @@ function kaprekarsConstant(input) {
     let counter = null;
 
     while (test !== 6174) {
-        var ascending = input.toString().split('').sort().join('');
-        var descending = input.toString().split('').sort((a,b) => {return b - a}).join('');
+        let ascending = input.toString().split('').sort().join('');
+        let descending = input.toString().split('').sort((a,b) => {return b - a}).join('');
 
         test = descending - ascending
         resultsArray.push(test);
