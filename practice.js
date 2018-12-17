@@ -8,16 +8,47 @@
 
 
 function kaprekarsConstant(input) {
-    
-    
+    if (checkValidInput(input) !== true) {
+        return 'Please enter a valid input';
+    }
+
+    const resultsArray = [];
+    let test;
+    let counter = null;
+
+    while (test !== 6174) {
+        var ascending = input.toString().split('').sort().join('');
+        var descending = input.toString().split('').sort((a,b) => {return b - a}).join('');
+
+        test = descending - ascending
+        resultsArray.push(test);
+        input = test;
+        counter++
+    }
+
+    return counter;
+
 }
 
-function orderInput(input) {
-    input = input.toString().sort();
-    return input;
+function checkValidInput(input) {
+    const characterCount = {}
 
+    let inputCopy = input.toString().slice();
+
+    for ( var i = 0; i < inputCopy.length; i++) {
+        if (characterCount[inputCopy.charAt(i)] === undefined) {
+            characterCount[inputCopy.charAt(i)] = 1;
+        } else {
+            characterCount[inputCopy.charAt(i)]++;
+            if (characterCount[inputCopy.charAt(i)]  > 2) {
+                return false
+            }
+        }
+    }
+
+    return true
+        
 }
 
-console.log(orderInput(3524));
-
-console.log(kaprekarsConstant(3524));
+console.log(kaprekarsConstant(3254))
+console.log(kaprekarsConstant(1112))
